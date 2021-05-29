@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { Todo } from '../models/Todo.model';
 import { TodoList } from '../models/TodoList.model';
 import { TodoService } from '../services/todos.service';
-import { TodosDialogComponent } from '../todos-dialog/todos-dialog/todos-dialog.component';
+import { TodosDialogComponent } from '../todos-dialog/todos-dialog.component';
 
 @Component({
   selector: 'app-todos',

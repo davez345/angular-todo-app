@@ -27,7 +27,7 @@ import { TodoService } from './services/todos.service';
 import { selectPipe } from './pipes/selectPipe';
 import { searchPipe } from './pipes/searchPipe';
 import { HttpClientModule } from '@angular/common/http';
-import { TodosDialogComponent } from './todos-dialog/todos-dialog/todos-dialog.component';
+import { TodosDialogComponent } from './todos-dialog/todos-dialog.component';
 import { counterPipe } from './pipes/counterPipe';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
