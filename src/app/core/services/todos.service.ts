@@ -64,6 +64,7 @@ export class TodoService {
     }
 
     deleteTodoTask(listIndex: number, taskIndex: number) {
+        console.log(listIndex);
         this.todolists[listIndex].todos.splice(taskIndex, 1);
         this.TodoUpdate.next(this.todolists.slice());
         this.storeTodos();
@@ -73,7 +74,7 @@ export class TodoService {
         this.http.put('https://todoapp-d3c27-default-rtdb.europe-west1.firebasedatabase.app/todos.json',
         this.todolists
         ).subscribe(response => {
-            console.log(response);
+            //console.log(response);
         })
     }
 

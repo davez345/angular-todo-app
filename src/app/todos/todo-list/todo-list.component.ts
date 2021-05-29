@@ -32,7 +32,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
       this.route.params.subscribe((params: Params) => {
         this.listId = +params['id'];
-        if(this.todoService.getTodoList(this.listId)) {
+        if(this.todoService.getTodoList(this.listId)) {    
             this.todoList = this.todoService.getTodoList(this.listId);
             this.todos = this.todoList.todos;
         }
@@ -41,8 +41,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
       this.subscription = this.todoService.TodoUpdate
       .subscribe(
         (todoLists: TodoList[]) => { 
-            if(todoLists && todoLists.length >= 1) {
-              console.log(todoLists);
+            if(todoLists[this.listId] && todoLists[this.listId].todos.length >= 1) {
               this.todoList = this.todoService.getTodoList(this.listId);
               this.todos = todoLists[this.listId].todos;
             } else {
@@ -103,8 +102,9 @@ export class TodoListComponent implements OnInit, OnDestroy {
     this.updateTask(todo, taskIndex)
   }
 
-  onDelete(listIndex: number) {
-    this.todoService.deleteTodoTask(listIndex,this.listId);
+  onDelete(taskIndex: number) {
+    console.log(this.listId)
+    this.todoService.deleteTodoTask(this.listId,taskIndex);
   }
 
   addTask(newTodo: Todo) {

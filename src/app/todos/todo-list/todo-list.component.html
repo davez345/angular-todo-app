@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-xs-12">
         <mat-card style="margin-top: 5px">
-        <mat-card-title>
+        <mat-card-title *ngIf="todoList != undefined">
             <h2>{{todoList.title}}</h2>
         </mat-card-title>
             <div class="row">
@@ -35,15 +35,15 @@
         <p *ngIf="todos.length < 1">No tasks available</p>
         <mat-accordion *ngIf="todos.length >= 1"  class="todoList example-headers-align" multi>
             
-            <mat-expansion-panel *ngFor="let todo of todos | selectFilter: selected | searchFilter: searchValue; index as i">
+            <mat-expansion-panel [ngClass]="{taskdone: todo.done}" *ngFor="let todo of todos | selectFilter: selected | searchFilter: searchValue; index as i">
                 <mat-expansion-panel-header class="todo-task">
-                  <mat-checkbox (click)="$event.stopPropagation()" (change)="onMarkTask($event, todo, i)" class="checkbox" [(ngModel)]="todo.done"></mat-checkbox>
+                  <mat-checkbox color="primary" (click)="$event.stopPropagation()" (change)="onMarkTask($event, todo, i)" class="checkbox" [(ngModel)]="todo.done"></mat-checkbox>
                     <div class="task-content">
                         <mat-panel-title class="task-title" [ngClass]="{strikethrough: todo.done}">
                            {{todo.title}}
                         </mat-panel-title>
                         <mat-panel-description>
-                            {{todo.deadline | date: 'dd/MM/yyyy h:mm'}}
+                            {{todo.deadline | date: 'dd/MM/yyyy HH:mm'}}
                             <span id="todo-item-icons">
                                 <mat-icon class="action-icon" (click)="onDelete(i)" (click)="$event.stopPropagation();">delete</mat-icon>
                                 <mat-icon class="action-icon" (click)="openEditDialog(i)" (click)="$event.stopPropagation();">mode_edit</mat-icon>
@@ -52,8 +52,8 @@
                     </div>
                 
                     </mat-expansion-panel-header>
-               
-                <p>{{todo.description}}</p>
+                <p *ngIf="todo.description == ''">No description available for this task</p>
+                <p *ngIf="todo.description != ''">{{todo.description}}</p>
                  
             </mat-expansion-panel>
 

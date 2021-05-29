@@ -24,7 +24,7 @@
             <div class="col-xs-12">
                 <p *ngIf="todoLists.length < 1">No lists available</p>
                 <mat-selection-list *ngIf="todoLists.length >= 1" #todos [multiple]="false">
-                    <mat-list-option class="todo-list-entry" *ngFor="let todoList of todoLists; index as i" [routerLink]="[i]" [value]="todoList.title">
+                    <mat-list-option class="todo-list-entry" *ngFor="let todoList of todoLists; index as i" [routerLink]="[i]" routerLinkActive="activeLink"  [value]="todoList.title">
                         <div class="todo-list-content">
                             <div class="todo-list-title">
                                  {{todoList.title}} 
