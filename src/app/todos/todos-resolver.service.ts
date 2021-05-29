@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
-import { TodoList } from "../models/TodoList.model";
-import { TodoService } from "../services/todos.service";
+import { TodoList } from "../core/models/TodoList.model";
+import { TodoService } from "../core/services/todos.service";
 
 @Injectable({providedIn: 'root'})
 export class TodosResloverService implements Resolve<TodoList[]> {

@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
-import { TodoList } from 'src/app/models/TodoList.model';
-import { TodoService } from 'src/app/services/todos.service';
+import { TodoList } from 'src/app/core/models/TodoList.model';
+import { TodoService } from 'src/app/core/services/todos.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { DatePipe } from '@angular/common';
-import { Todo } from 'src/app/models/Todo.model';
-import { iif, Subscription } from 'rxjs';
+import { Todo } from 'src/app/core/models/Todo.model';
+import { Subscription } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
@@ -87,7 +86,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
       listIndex: this.listId,
       todoTask: this.todos[taskIndex]
     };
-    
+
     const dialogRef = this.dialog.open(TaskDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(

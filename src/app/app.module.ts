@@ -23,12 +23,12 @@ import { TodoListComponent } from './todos/todo-list/todo-list.component';
 import { TaskDialogComponent } from './todos/todo-list/task-dialog/task-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
-import { TodoService } from './services/todos.service';
-import { selectPipe } from './pipes/selectPipe';
-import { searchPipe } from './pipes/searchPipe';
+import { TodoService } from './core/services/todos.service';
+import { selectPipe } from './core/pipes/selectPipe';
+import { searchPipe } from './core/pipes/searchPipe';
 import { HttpClientModule } from '@angular/common/http';
 import { TodosDialogComponent } from './todos-dialog/todos-dialog.component';
-import { counterPipe } from './pipes/counterPipe';
+import { counterPipe } from './core/pipes/counterPipe';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 

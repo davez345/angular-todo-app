@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import * as moment from 'moment';
-import { Todo } from 'src/app/models/Todo.model';
+import { Todo } from 'src/app/core/models/Todo.model';
 
 
 @Component({

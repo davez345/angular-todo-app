@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TodoList } from 'src/app/models/TodoList.model';
+import { TodoList } from 'src/app/core/models/TodoList.model';
 import { TaskDialogComponent } from 'src/app/todos/todo-list/task-dialog/task-dialog.component';
 
 @Component({

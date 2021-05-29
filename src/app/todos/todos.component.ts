@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { Todo } from '../models/Todo.model';
-import { TodoList } from '../models/TodoList.model';
-import { TodoService } from '../services/todos.service';
+import { Todo } from '../core/models/Todo.model';
+import { TodoList } from '../core/models/TodoList.model';
+import { TodoService } from '../core/services/todos.service';
 import { TodosDialogComponent } from '../todos-dialog/todos-dialog.component';
 
 @Component({
