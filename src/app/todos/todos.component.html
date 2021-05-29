@@ -1,0 +1,51 @@
+
+  <div class="row">
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-xs-12">
+               <form [formGroup]="addTodoForm" (ngSubmit)="onSubmit()">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Todo list title</mat-label>
+                      <input
+                      required 
+                      matInput 
+                      type="text"
+                      id="title"
+                      formControlName="title">
+                    </mat-form-field>
+                    <button [disabled]="!addTodoForm.valid" style="margin: 8px" mat-fab color="primary">
+                        <mat-icon>playlist_add</mat-icon>
+                    </button>
+               </form>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p *ngIf="todoLists.length < 1">No lists available</p>
+                <mat-selection-list *ngIf="todoLists.length >= 1" #todos [multiple]="false">
+                    <mat-list-option class="todo-list-entry" *ngFor="let todoList of todoLists; index as i" [routerLink]="[i]" [value]="todoList.title">
+                        <div class="todo-list-content">
+                            <div class="todo-list-title">
+                                 {{todoList.title}} 
+                            </div>
+                            <div *ngIf="todoList.todos.length < 1">No tasks</div> 
+                            <div *ngIf="todoList.todos.length >= 1"> {{ todoList.todos | countTasks }} / {{ todoList.todos.length }} tasks finished </div>
+                                <div class="todo-list-icons">
+
+                                    <mat-icon class="action-icon" matListIcon (click)="onDelete(i)">delete</mat-icon>
+                                    <mat-icon class="action-icon" matListIcon (click)="openDialog(todoList.title, i)">mode_edit</mat-icon>
+                                </div>
+                        </div>
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+            </div>
+    </div>
+ 
+    <div class="col-md-7">
+        <router-outlet></router-outlet>
+    </div>
+</div>    
+ 
+  

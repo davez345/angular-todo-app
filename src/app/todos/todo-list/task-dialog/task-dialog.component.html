@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>{{editMode ? 'Edit task' : 'Add new task'}}</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="taskForm">
+        <div class="form-content">
+            <mat-form-field appearance="standard">
+                <input matInput
+                    type="text"
+                    placeholder="Task title"
+                    formControlName="title"
+                    required>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <input matInput
+                    type="text"
+                    placeholder="Task description"
+                    formControlName="description"
+                    required>
+            </mat-form-field>
+             <mat-form-field>
+                <input formControlName="deadline"
+                    matInput [min]="currentDate"
+                    [ngxMatDatetimePicker]="picker"
+                    placeholder="Choose a deadline"
+                    required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-button-group">
+    <button [disabled]="!taskForm.valid" class="mat-raised-button mat-primary"(click)="save()">{{editMode ? 'Save' : 'Add'}}</button>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+</mat-dialog-actions>

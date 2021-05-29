@@ -1,0 +1,51 @@
+// .example-headers-align .mat-expansion-panel-header-title,
+// .example-headers-align .mat-expansion-panel-header-description {
+//   flex-basis: 0;
+// }
+
+// .example-headers-align .mat-expansion-panel-header-description {
+//   justify-content: space-between;
+//   align-items: flex-end;
+// }
+
+#todo-item-icons {
+    align-items: center;
+    margin: 0 auto !important;
+}
+
+.task-search-input {
+    margin-left: 8px;
+}
+
+.todo-task {
+    display: flex;
+    width: 100%;
+}
+
+.task-content {
+    margin-left: 10px;
+    display: flex;
+    width: 100%;
+    order: 1;
+    justify-content: start;
+    align-items: center;
+}
+
+.task-title {
+    width: 20%;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.checkbox {
+    order: 0;
+}
+
+.list-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+

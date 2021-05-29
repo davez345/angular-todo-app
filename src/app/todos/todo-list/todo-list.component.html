@@ -1,0 +1,63 @@
+
+<div class="row">
+    <div class="col-xs-12">
+        <mat-card style="margin-top: 5px">
+        <mat-card-title>
+            <h2>{{todoList.title}}</h2>
+        </mat-card-title>
+            <div class="row">
+                <div class="col-xs-12 list-bar">
+                    <form>
+                        <mat-form-field appearance="standard">
+                            <mat-select [(value)]="selected">
+                                <mat-option *ngFor="let filterOption of filterOptions" [value]="filterOption">
+                                    {{filterOption}}
+                            </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="standard" class="task-search-input">
+                            <mat-label>Search for task</mat-label>
+                                <input matInput type="text" [(ngModel)]="searchValue" name="searchValue">
+                                <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </form>
+
+                    <button (click)="openDialog()" style="margin: 8px" mat-fab color="primary">
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            
+        <p *ngIf="todos.length < 1">No tasks available</p>
+        <mat-accordion *ngIf="todos.length >= 1"  class="todoList example-headers-align" multi>
+            
+            <mat-expansion-panel *ngFor="let todo of todos | selectFilter: selected | searchFilter: searchValue; index as i">
+                <mat-expansion-panel-header class="todo-task">
+                  <mat-checkbox (click)="$event.stopPropagation()" (change)="onMarkTask($event, todo, i)" class="checkbox" [(ngModel)]="todo.done"></mat-checkbox>
+                    <div class="task-content">
+                        <mat-panel-title class="task-title" [ngClass]="{strikethrough: todo.done}">
+                           {{todo.title}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{todo.deadline | date: 'dd/MM/yyyy h:mm'}}
+                            <span id="todo-item-icons">
+                                <mat-icon class="action-icon" (click)="onDelete(i)" (click)="$event.stopPropagation();">delete</mat-icon>
+                                <mat-icon class="action-icon" (click)="openEditDialog(i)" (click)="$event.stopPropagation();">mode_edit</mat-icon>
+                            </span>
+                        </mat-panel-description>
+                    </div>
+                
+                    </mat-expansion-panel-header>
+               
+                <p>{{todo.description}}</p>
+                 
+            </mat-expansion-panel>
+
+        </mat-accordion>
+        </mat-card>
+    </div>
+</div>
