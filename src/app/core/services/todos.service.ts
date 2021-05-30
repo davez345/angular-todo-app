@@ -4,6 +4,7 @@ import { Subject } from "rxjs";
 import { Todo } from "../models/Todo.model";
 import { TodoList } from "../models/TodoList.model";
 import { map, tap } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 @Injectable()
 export class TodoService {
@@ -64,14 +65,13 @@ export class TodoService {
     }
 
     deleteTodoTask(listIndex: number, taskIndex: number) {
-        console.log(listIndex);
         this.todolists[listIndex].todos.splice(taskIndex, 1);
         this.TodoUpdate.next(this.todolists.slice());
         this.storeTodos();
     }
 
     storeTodos() {
-        this.http.put('https://todoapp-d3c27-default-rtdb.europe-west1.firebasedatabase.app/todos.json',
+        this.http.put(environment.apiUrl,
         this.todolists
         ).subscribe(response => {
             //console.log(response);
@@ -79,7 +79,7 @@ export class TodoService {
     }
 
     fetchTodos() {
-        return this.http.get<TodoList[]>('https://todoapp-d3c27-default-rtdb.europe-west1.firebasedatabase.app/todos.json'
+        return this.http.get<TodoList[]>(environment.apiUrl
         ).pipe(map(todos=> { 
             if(todos)  {
             return todos.map(todoList => {

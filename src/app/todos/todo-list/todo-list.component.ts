@@ -103,7 +103,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
 
   onDelete(taskIndex: number) {
-    console.log(this.listId)
     this.todoService.deleteTodoTask(this.listId,taskIndex);
   }
 
